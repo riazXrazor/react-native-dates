@@ -16,7 +16,11 @@ type DatesType = {
   focusedInput: 'startDate' | 'endDate',
   onDatesChange: (date: { date?: ?moment, startDate?: ?moment, endDate?: ?moment }) => void,
   isDateBlocked: (date: moment) => boolean,
-  onDisableClicked: (date: moment) => void
+  onDisableClicked: (date: moment) => void,
+  nextElement: ?any,
+  prevElement: ?any,
+  daySelectedStyle : ?any,
+  daySelectedTextStyle: ?any
 }
 
 type MonthType = {
@@ -275,7 +279,7 @@ export default class Dates extends Component {
     this.setState({ currentDate, focusedMonth });
   }
 
-  props: [DatesType, nextElement, nextElement];
+  props: DatesType;
 
   render() {
     const previousMonth = () => {
