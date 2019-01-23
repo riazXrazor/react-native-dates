@@ -73,8 +73,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(255, 255, 255)'
   },
   daySelected: {
-    borderWidth: 1,
-    borderColor: '#FFFFFF';
+    borderWidth: 1
   },
   dayText: {
     color: 'rgb(0, 0, 0)',
