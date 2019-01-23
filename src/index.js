@@ -29,7 +29,9 @@ type MonthType = {
   focusedMonth: moment,
   onDatesChange: (date: { date?: ?moment, startDate?: ?moment, endDate?: ?moment }) => void,
   isDateBlocked: (date: moment) => boolean,
-  onDisableClicked: (date: moment) => void
+  onDisableClicked: (date: moment) => void,
+  daySelectedStyle : ?any,
+  daySelectedTextStyle: ?any
 }
 
 type WeekType = {
@@ -41,7 +43,9 @@ type WeekType = {
   startOfWeek: moment,
   onDatesChange: (date: { date?: ?moment, startDate?: ?moment, endDate?: ?moment }) => void,
   isDateBlocked: (date: moment) => boolean,
-  onDisableClicked: (date: moment) => void
+  onDisableClicked: (date: moment) => void,
+  daySelectedStyle: ?any,
+  daySelectedTextStyle: ?any
 }
 
 const styles = StyleSheet.create({
@@ -117,7 +121,9 @@ export const Week = (props: WeekType) => {
     startOfWeek,
     onDatesChange,
     isDateBlocked,
-    onDisableClicked
+    onDisableClicked,
+    daySelectedStyle,
+    daySelectedTextStyle
   } = props;
 
   const days = [];
@@ -163,8 +169,8 @@ export const Week = (props: WeekType) => {
       isSelected && styles.daySelected,
     ];
 
-    if(isSelected && this.props.daySelectedStyle){
-      style.push(this.props.daySelectedStyle)
+    if (isSelected && daySelectedStyle) {
+      style.push(daySelectedStyle);
     }
 
     const styleText = [
@@ -173,8 +179,8 @@ export const Week = (props: WeekType) => {
       isSelected && styles.daySelectedText
     ];
 
-    if(isSelected && this.props.daySelectedTextStyle){
-      style.push(this.props.daySelectedTextStyle)
+    if (isSelected && daySelectedTextStyle) {
+      style.push(daySelectedTextStyle);
     }
 
 
@@ -206,7 +212,9 @@ export const Month = (props: MonthType) => {
     focusedMonth,
     onDatesChange,
     isDateBlocked,
-    onDisableClicked
+    onDisableClicked,
+    daySelectedStyle,
+    daySelectedTextStyle
   } = props;
 
   const dayNames = [];
@@ -238,6 +246,8 @@ export const Month = (props: MonthType) => {
         onDatesChange={onDatesChange}
         isDateBlocked={isDateBlocked}
         onDisableClicked={onDisableClicked}
+        daySelectedStyle={daySelectedStyle}
+        daySelectedTextStyle={daySelectedTextStyle}
       />
     );
   });
@@ -298,6 +308,9 @@ export default class Dates extends Component {
           onDatesChange={this.props.onDatesChange}
           isDateBlocked={this.props.isDateBlocked}
           onDisableClicked={this.props.onDisableClicked}
+          daySelectedStyle={this.props.daySelectedStyle}
+          daySelectedTextStyle={this.props.daySelectedTextStyle}
+
         />
       </View>
     );
