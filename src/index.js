@@ -173,9 +173,9 @@ export const Week = (props: WeekType) => {
       isSelected && styles.daySelected,
     ];
 
-    if (isSelected && daySelectedStyle) {
-      style.push(daySelectedStyle);
-    }
+    // if (isSelected && daySelectedStyle) {
+    //   style.push(daySelectedStyle);
+    // }
 
     const styleText = [
       styles.dayText,
@@ -183,9 +183,9 @@ export const Week = (props: WeekType) => {
       isSelected && styles.daySelectedText
     ];
 
-    if (isSelected && daySelectedTextStyle) {
-      style.push(daySelectedTextStyle);
-    }
+    // if (isSelected && daySelectedTextStyle) {
+    //   style.push(daySelectedTextStyle);
+    // }
 
 
     days.push(
