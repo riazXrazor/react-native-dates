@@ -294,11 +294,11 @@ export default class Dates extends Component {
       <View style={styles.calendar}>
         <View style={styles.heading}>
           <TouchableOpacity onPress={previousMonth}>
-            <View>{ !!this.props.prevElement ? this.props.prevElement : null }</View>
+          
           </TouchableOpacity>
           <Text>{this.state.focusedMonth.format('MMMM')}</Text>
           <TouchableOpacity onPress={nextMonth}>
-            <View>{ !!this.props.nextElement ? this.props.nextElement : null }</View>
+           
           </TouchableOpacity>
         </View>
         <Month
