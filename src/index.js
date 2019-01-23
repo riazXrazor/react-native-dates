@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(255, 255, 255)'
   },
   daySelected: {
-    backgroundColor: 'rgb(52,120,246)'
+    borderWidth: 1,
+    borderColor: #FFFFFF;
   },
   dayText: {
     color: 'rgb(0, 0, 0)',
@@ -160,14 +161,23 @@ export const Week = (props: WeekType) => {
     const style = [
       styles.day,
       isBlocked && styles.dayBlocked,
-      isSelected && styles.daySelected
+      isSelected && styles.daySelected,
     ];
+
+    if(isSelected && this.props.daySelectedStyle){
+      style.push(this.props.daySelectedStyle)
+    }
 
     const styleText = [
       styles.dayText,
       isBlocked && styles.dayDisabledText,
       isSelected && styles.daySelectedText
     ];
+
+    if(isSelected && this.props.daySelectedTextStyle){
+      style.push(this.props.daySelectedTextStyle)
+    }
+
 
     days.push(
       <TouchableOpacity
@@ -256,7 +266,7 @@ export default class Dates extends Component {
     this.setState({ currentDate, focusedMonth });
   }
 
-  props: DatesType;
+  props: [DatesType, nextElement, nextElement];
 
   render() {
     const previousMonth = () => {
@@ -271,11 +281,11 @@ export default class Dates extends Component {
       <View style={styles.calendar}>
         <View style={styles.heading}>
           <TouchableOpacity onPress={previousMonth}>
-            <Text>{'< Previous'}</Text>
+            <View>{ !!this.props.prevElement ? this.props.prevElement : null }</View>
           </TouchableOpacity>
           <Text>{this.state.focusedMonth.format('MMMM')}</Text>
           <TouchableOpacity onPress={nextMonth}>
-            <Text>{'Next >'}</Text>
+            <View>{ !!this.props.nextElement ? this.props.nextElement : null }</View>
           </TouchableOpacity>
         </View>
         <Month
